@@ -3,8 +3,11 @@ Benchmark tests for LMAX Disruptor – a High Performance Inter-thread Messaging
 based on a ring buffer written using Java LMAX Disruptor implementation and JMH for Java Microbenchmarking.
 
 # Running
-- > ```mvn clean install```
-- > ```java -classpath target/microbenchmarks.jar com.disruptor.benchmark.DisruptorBenchmarks```
+- Build application
+> ```mvn clean install```
+
+- Run application
+> ```java -classpath target/microbenchmarks.jar com.disruptor.benchmark.DisruptorBenchmarks```
 
 Use `java -jar target/benchmarks.jar -h` command to see all available command line options.
 
