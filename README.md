@@ -38,7 +38,7 @@ These tests were run on
 
 Here are the benchmark results for `com.lmax:disruptor:3.3.4`
 
-## 1 thread configuration (**1 ops** = 1 MLN events)
+## 1 thread configuration (1 ops = 1 MLN events)
 
 | Score     | Unit  | Threads | waitStrategy                                | producerType | ringBufferSize |
 |-----------|-------|---------|---------------------------------------------|--------------|----------------|
@@ -63,7 +63,7 @@ Here are the benchmark results for `com.lmax:disruptor:3.3.4`
 | 13.630005 | ops/s | 1       | com.lmax.disruptor.BlockingWaitStrategy     | MULTI        | 2048           |
 | 11.444324 | ops/s | 1       | com.lmax.disruptor.BlockingWaitStrategy     | SINGLE       | 2048           |
 
-## 4 threads configuration (**1 ops** = 1 MLN events)
+## 4 threads configuration (1 ops = 1 MLN events)
 
 | Score      | Unit  | Threads | waitStrategy                                | producerType | ringBufferSize |
 |------------|-------|---------|---------------------------------------------|--------------|----------------|
