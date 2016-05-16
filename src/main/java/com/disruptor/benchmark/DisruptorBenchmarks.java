@@ -21,7 +21,7 @@ public class DisruptorBenchmarks {
     private RingBuffer<LongEvent> ringBuffer;
     private AtomicInteger eventCount;
 
-    @Param({"512", "1024", "2048"})
+    @Param({"1024", "2048"})
     String ringBufferSize;
     @Param({"SINGLE", "MULTI"})
     String producerType;
