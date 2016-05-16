@@ -64,26 +64,26 @@ public class DisruptorBenchmarks {
     }
 
     @Benchmark
-    public void generateEvents() {
-        final int MAX_VALUE = Configuration.NUM_OF_EVENTS;
+    public void processOneMlnEvents() {
+        final int ONE_MLN = 1000000;
 
-        for (int i = 0; i < MAX_VALUE; i++) {
+        for (int i = 0; i < ONE_MLN; i++) {
             ringBuffer.publishEvent(LongEvent.EVENT_TRANSLATOR, Configuration.VALUE);
         }
 
-        while (eventCount.get() < MAX_VALUE) {
+        while (eventCount.get() < ONE_MLN) {
             Thread.yield();
         }
     }
 
     private static final class LongEvent {
-        private int value = -1;
+        private long value = -1L;
 
-        public int getValue() {
+        public long getValue() {
             return value;
         }
 
-        public void setValue(int value) {
+        public void setValue(long value) {
             this.value = value;
         }
 
@@ -94,11 +94,11 @@ public class DisruptorBenchmarks {
             }
         };
 
-        public static final EventTranslatorOneArg<LongEvent, Integer> EVENT_TRANSLATOR =
-                new EventTranslatorOneArg<DisruptorBenchmarks.LongEvent, Integer>() {
+        public static final EventTranslatorOneArg<LongEvent, Long> EVENT_TRANSLATOR =
+                new EventTranslatorOneArg<DisruptorBenchmarks.LongEvent, Long>() {
                     @Override
-                    public void translateTo(DisruptorBenchmarks.LongEvent event, long sequence, Integer val) {
-                        event.setValue(val);
+                    public void translateTo(DisruptorBenchmarks.LongEvent event, long sequence, Long value) {
+                        event.setValue(value);
                     }
                 };
     }
@@ -132,7 +132,5 @@ public class DisruptorBenchmarks {
                 .build();
 
         new Runner(opts).run();
-
-        System.out.println("Results stored to " + resultFileName);
     }
 }
