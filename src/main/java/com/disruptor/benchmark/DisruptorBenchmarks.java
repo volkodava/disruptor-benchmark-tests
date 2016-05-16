@@ -5,14 +5,11 @@ import com.lmax.disruptor.dsl.Disruptor;
 import com.lmax.disruptor.dsl.ProducerType;
 import com.lmax.disruptor.util.DaemonThreadFactory;
 import org.openjdk.jmh.annotations.*;
-import org.openjdk.jmh.results.Result;
-import org.openjdk.jmh.results.RunResult;
 import org.openjdk.jmh.results.format.ResultFormatType;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -117,6 +114,8 @@ public class DisruptorBenchmarks {
     }
 
     private static void runBenchmarks(int numOfThreads) throws Exception {
+        final String resultFileName = "threads_x" + numOfThreads + ".csv";
+
         Options opts = new OptionsBuilder()
                 .include(".*" + DisruptorBenchmarks.class.getSimpleName() + ".*")
                 .forks(Configuration.FORKS)
@@ -129,16 +128,11 @@ public class DisruptorBenchmarks {
                 // Use this to selectively constrain/override parameters
                 // .param("ringBufferSize", "256", "512", "1024", "2048", "4096")
                 .resultFormat(ResultFormatType.CSV)
-                .result("threads_x" + numOfThreads + ".csv")
+                .result(resultFileName)
                 .build();
 
-        Collection<RunResult> records = new Runner(opts).run();
-        for (RunResult result : records) {
-            Result r = result.getPrimaryResult();
-            System.out.println("API replied benchmark score: "
-                    + r.getScore() + " "
-                    + r.getScoreUnit() + " over "
-                    + r.getStatistics().getN() + " iterations");
-        }
+        new Runner(opts).run();
+
+        System.out.println("Results stored to " + resultFileName);
     }
 }
