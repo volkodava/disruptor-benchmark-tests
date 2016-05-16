@@ -9,8 +9,6 @@ based on a ring buffer written using Java LMAX Disruptor implementation and JMH 
 - Run application
 > ```java -classpath target/microbenchmarks.jar com.disruptor.benchmark.DisruptorBenchmarks```
 
-Use `java -jar target/microbenchmarks.jar -h` command to see all available command line options.
-
 # Resources
 - [Using the Disruptor](https://github.com/LMAX-Exchange/disruptor/wiki)
 - [Inter-thread communications in Java at the speed of light](http://www.infoq.com/articles/High-Performance-Java-Inter-Thread-Communications)
@@ -38,7 +36,7 @@ These tests were run on
 
 Here are the benchmark results for `com.lmax:disruptor:3.3.4`
 
-## 1 thread configuration (1 ops = 1 MLN events)
+## Throughput: 1 ops/s = 1 MLN events/sec, 1 thread configuration
 
 | Score     | Unit  | Threads | waitStrategy                                | producerType | ringBufferSize |
 |-----------|-------|---------|---------------------------------------------|--------------|----------------|
@@ -63,7 +61,7 @@ Here are the benchmark results for `com.lmax:disruptor:3.3.4`
 | 13.630005 | ops/s | 1       | com.lmax.disruptor.BlockingWaitStrategy     | MULTI        | 2048           |
 | 11.444324 | ops/s | 1       | com.lmax.disruptor.BlockingWaitStrategy     | SINGLE       | 2048           |
 
-## 4 threads configuration (1 ops = 1 MLN events)
+## Throughput: 1 ops/s = 1 MLN events/sec, 4 threads configuration
 
 | Score      | Unit  | Threads | waitStrategy                                | producerType | ringBufferSize |
 |------------|-------|---------|---------------------------------------------|--------------|----------------|
