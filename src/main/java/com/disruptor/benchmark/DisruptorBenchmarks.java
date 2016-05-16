@@ -106,7 +106,6 @@ public class DisruptorBenchmarks {
     public static void main(String[] args) throws Exception {
         int[] threadConfigurations = {1, 4};
 
-
         for (int numOfThreads : threadConfigurations) {
             // run benchmarks with specific number of threads
             runBenchmarks(numOfThreads);
