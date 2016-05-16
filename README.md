@@ -20,6 +20,10 @@ Use `java -jar target/benchmarks.jar -h` command to see all available command li
 # Results
 These tests were run on
 
+- VM version: JDK 1.8.0_91, VM 25.91-b14
+- VM invoker: /Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home/jre/bin/java
+- VM options: -server
+
 | Parameter             | Value         |
 |-----------------------|---------------|
 | Model Name            | MacBook Pro   |
