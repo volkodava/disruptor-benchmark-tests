@@ -9,7 +9,7 @@ based on a ring buffer written using Java LMAX Disruptor implementation and JMH 
 - Run application
 > ```java -classpath target/microbenchmarks.jar com.disruptor.benchmark.DisruptorBenchmarks```
 
-Use `java -jar target/benchmarks.jar -h` command to see all available command line options.
+Use `java -jar target/microbenchmarks.jar -h` command to see all available command line options.
 
 # Resources
 - [Using the Disruptor](https://github.com/LMAX-Exchange/disruptor/wiki)
