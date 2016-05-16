@@ -119,7 +119,7 @@ public class DisruptorBenchmarks {
                 .include(".*" + DisruptorBenchmarks.class.getSimpleName() + ".*")
                 .forks(Configuration.FORKS)
                 .threads(numOfThreads)
-                .jvmArgs("-server")
+                .jvmArgs("-server", "-Xms2048m", "-Xmx2048m")
                 .mode(Mode.Throughput)
                 .timeUnit(TimeUnit.SECONDS)
                 .warmupIterations(Configuration.WARMUP_ITERATIONS)
